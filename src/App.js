@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Try from './components/Try';
+import Layout from './components/Layout';
+import DisplaySolution from './components/solution/DisplaySolution';
+import PostSolution from './components/solution/PostSolution';
+import UpdateSolution from './components/solution/UpdateSolution';
+import SearchSolution from './components/solution/SearchSolution';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+      <Routes>
+        
+      <Route path="/" element={<Layout/>}>
+        <Route path="/try" element={<Try/>} ></Route> 
+        <Route path="/displaySolution" element={<DisplaySolution/>} ></Route> 
+        <Route path="/searchSolution" element={<SearchSolution/>} ></Route> 
+        <Route path="/postSolution/:issueId" element={<PostSolution/>} ></Route> 
+        <Route path="/updateSolution/:issueId/:solutionDescription" element={<UpdateSolution />} />
+        </Route>
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }
